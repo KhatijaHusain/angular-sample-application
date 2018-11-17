@@ -4,4 +4,5 @@ export interface IProduct {
     'productCode': string;
     'productPrice': number;
     'productImage': string;
+    'productRating': number;
 }

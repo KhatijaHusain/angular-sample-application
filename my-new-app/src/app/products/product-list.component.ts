@@ -29,27 +29,31 @@ products: IProduct[] = [
         'productName': 'Celini Latest Collection',
         'productCode': 'a-100',
         'productPrice': 2000,
-        'productImage' : './assets/Images/purse1.jpg'
+        'productImage' : './assets/Images/purse1.jpg',
+        'productRating': 4
     },
     {
         'productId': 2,
         'productName': 'Celini Latest Collection',
         'productCode': 'a-200',
         'productPrice': 2000,
-        'productImage' : './assets/Images/purse2.jpg'
+        'productImage' : './assets/Images/purse2.jpg',
+        'productRating': 2
     },
     {
         'productId': 3,
         'productName': 'Handmade Exclusive',
         'productCode': 'a-300',
         'productPrice': 3000,
-        'productImage' : './assets/Images/purse3.jpg'
+        'productImage' : './assets/Images/purse3.jpg',
+        'productRating': 5
     }
 ];
 
 constructor() {
     this.filteredProducts = this.products;
 }
+
 ngOnInit(): void {
  console.log('In Onit');
 }
