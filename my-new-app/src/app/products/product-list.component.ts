@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
+import { IProduct } from './product';
 
 @Component({
     selector: 'app-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.less']
 })
 
 export class ProductListComponent {
@@ -10,7 +12,7 @@ title = 'Product List';
 showImage = true;
 listFilter = 'cart';
 
-products = [
+products : IProduct[] = [
     {
         'productId': 1,
         'productName': 'Celini Latest Collection',
