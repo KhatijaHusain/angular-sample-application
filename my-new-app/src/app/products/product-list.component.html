@@ -3,16 +3,34 @@
     {{ title }}
     </div>
     <div class="card-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-2">Filter by:</div>
-                <div class="col-3"><input type="text"></div>
-            </div>
-            <div class="row">
-                <div class="col-2">Srno</div>   
-                <div class="col-5">Product Name</div>    
-                <div class="col-5">Price</div>
-            </div>
+        <div class="row">
+            <div class="col-2">Filter by:</div>
+            <div class="col-3"><input type="text"></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Filtered</div>
+        </div>
+        <div class="table-responsive">
+        <table class="table" *ngIf="products && products.length">
+            <thead>
+                <tr>
+                    <th><button class="btn btn-primary" (click)='toggleImage()'>{{showImage? "Hide Image":"Show Image"}}</button></th>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Product Code</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                     <tr *ngFor="let product of products">
+                         <td><img *ngIf='showImage' [src]='product.productImage' [title]='product.productName' style='height:80px; width:80px;'/></td>
+                        <td>{{ product.productId }}</td>
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productCode }}</td>
+                        <td>{{ product.productPrice }}</td>
+                    </tr>
+            </tbody>
+        </table>
         </div>
     </div>
 </div>
