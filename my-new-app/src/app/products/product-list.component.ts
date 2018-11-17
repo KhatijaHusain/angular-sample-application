@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
 export class ProductListComponent {
 title = 'Product List';
 showImage = true;
+listFilter = 'cart';
 
 products = [
     {
