@@ -1,14 +1,18 @@
 <div class="card">
-    <div class="card-header">
+    <div class="card-header alignText ">
     {{ title }}
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-2">Filter by:</div>
+            <div class="col-2" class="alignText">Filter by:</div>
             <div class="col-3"><input type="text" [(ngModel)]= 'listFilter'></div>
         </div>
+        <div class="row" style="height: 20px">
+
+        </div>
         <div class="row">
-            <div class="col-2">Filtered by : {{ listFilter }}</div>
+            <div class="col-2" class="alignText">Filtered by :</div>
+            <div class="col-3" class="alignText">{{ listFilter }}</div>
         </div>
         <div class="table-responsive">
         <table class="table" *ngIf="products && products.length">
@@ -22,11 +26,11 @@
                 </tr>
             </thead>
             <tbody>
-                     <tr *ngFor="let product of products">
+                     <tr *ngFor="let product of filteredProducts">
                          <td><img *ngIf='showImage' [src]='product.productImage' [title]='product.productName' class="size"/></td>
                         <td>{{ product.productId }}</td>
                         <td>{{ product.productName }}</td>
-                        <td>{{ product.productCode }}</td>
+                        <td>{{ product.productCode | lowercase }}</td>
                         <td>{{ product.productPrice | currency : 'Rupee' : '&#8377;' : '3.1-2' }}</td>
                     </tr>
             </tbody>
