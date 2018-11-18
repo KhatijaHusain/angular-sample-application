@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProduct } from './products/product';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle = 'Lets Shop';
+  pageTitle = 'Shaandaar Product Management';
+
 }
