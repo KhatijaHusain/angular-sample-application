@@ -1,5 +1,6 @@
 import {Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'app-products',
@@ -11,6 +12,8 @@ export class ProductListComponent implements OnInit {
 title = 'Product List';
 showImage = true;
 _listfilter: string;
+filteredProducts: IProduct[];
+products: IProduct[];
 
 get listFilter(): string {
     return this._listfilter;
@@ -21,48 +24,20 @@ set listFilter(value: string) {
     this.filteredProducts = this._listfilter ? this.performFilter(this.listFilter) : this.products;
 }
 
-
-filteredProducts: IProduct[];
-products: IProduct[] = [
-    {
-        'productId': 1,
-        'productName': 'Celini Latest Collection',
-        'productCode': 'a-100',
-        'productPrice': 2000,
-        'productImage' : './assets/Images/purse1.jpg',
-        'productRating': 4
-    },
-    {
-        'productId': 2,
-        'productName': 'Celini Latest Collection',
-        'productCode': 'a-200',
-        'productPrice': 2000,
-        'productImage' : './assets/Images/purse2.jpg',
-        'productRating': 2
-    },
-    {
-        'productId': 3,
-        'productName': 'Handmade Exclusive',
-        'productCode': 'a-300',
-        'productPrice': 3000,
-        'productImage' : './assets/Images/purse3.jpg',
-        'productRating': 5
-    }
-];
-
-constructor() {
-    this.filteredProducts = this.products;
+constructor(private productService: ProductService) {
 }
 
 ngOnInit(): void {
  console.log('In Onit');
+ this.products = this.productService.getProducts();
+ this.filteredProducts = this.products;
 }
 
 
 performFilter(filterValue: string): IProduct[] {
     filterValue = filterValue.toLocaleLowerCase();
-return this.products.filter((product: IProduct) =>
-product.productName.toLocaleLowerCase().indexOf(filterValue) !== -1);
+    return this.products.filter((product: IProduct) =>
+                                product.productName.toLocaleLowerCase().indexOf(filterValue) !== -1);
 }
 
 toggleImage(): void {
